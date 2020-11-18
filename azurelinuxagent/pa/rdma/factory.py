@@ -23,6 +23,7 @@ from azurelinuxagent.common.version import DISTRO_FULL_NAME, DISTRO_VERSION
 from .centos import CentOSRDMAHandler
 from .suse import SUSERDMAHandler
 from .ubuntu import UbuntuRDMAHandler
+from .gentoo import GentooRDMAHandler
 
 
 def get_rdma_handler(
@@ -42,6 +43,9 @@ def get_rdma_handler(
 
     if distro_full_name == 'Ubuntu':
         return UbuntuRDMAHandler()
+
+    # if distro_full_name == 'Gentoo Base System':
+    #     return GentooRDMAHandler()
 
     logger.info("No RDMA handler exists for distro='{0}' version='{1}'", distro_full_name, distro_version)
     return RDMAHandler()

@@ -37,6 +37,7 @@ from .redhat import RedhatOSUtil, Redhat6xOSUtil
 from .suse import SUSEOSUtil, SUSE11OSUtil
 from .ubuntu import UbuntuOSUtil, Ubuntu12OSUtil, Ubuntu14OSUtil, \
     UbuntuSnappyOSUtil, Ubuntu16OSUtil, Ubuntu18OSUtil
+from .gentoo import GentooOSUtil
 
 
 def get_osutil(distro_name=DISTRO_NAME,
@@ -106,6 +107,9 @@ def _get_osutil(distro_name, distro_code_name, distro_version, distro_full_name)
             return Redhat6xOSUtil()
         else:
             return RedhatOSUtil()
+
+    if distro_name == "gentoo":
+        return GentooOSUtil()
 
     if distro_name == "euleros":
         return RedhatOSUtil()
